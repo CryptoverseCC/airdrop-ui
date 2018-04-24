@@ -5,7 +5,7 @@ let web3PromiseResolve;
 const updateWeb3 = () => {
   if (typeof window.web3 !== 'undefined') {
     import('web3').then(Web3 => {
-      newWeb3 = new Web3(window.web3.currentProvider);
+      newWeb3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
       window.web3 = newWeb3;
       if (web3PromiseResolve) web3PromiseResolve(newWeb3);
     });
